@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+using Microsoft.Build.Framework;
+using MyContacts.BusinessLogic.Services.ServiceInterfaces;
 using MyContacts.DataAccess;
-using MyContacts.DataAccess.Implementation;
+using MyContacts.DataAccess.Interfaces;
 using MyContacts.Entities.Models;
-using MyContacts.Services.ServiceInterfaces;
 
-namespace MyContacts.Services.ServiceImplementation
+namespace MyContacts.BusinessLogic.Services.ServiceImplementation
 {
     public class ContactService : BaseService, IContactService
     {
@@ -15,9 +15,9 @@ namespace MyContacts.Services.ServiceImplementation
         {
             _repoContact = repoContact;
         }
-        public async Task<Contact> GetByKey(Guid? key)
+        public Contact GetByKey(Guid? key)
         {
-            var contact = await _repoContact.GetByIdAsync<Contact>(key);
+            var contact = _repoContact.GetById<Contact>(key);
             return contact;
         }
     }

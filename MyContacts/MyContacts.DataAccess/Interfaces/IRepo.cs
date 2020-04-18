@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 
-namespace MyContacts.DataAccess
+namespace MyContacts.DataAccess.Interfaces
 {
     public interface IRepo<TEntity> where TEntity : class
     {
         //Task<IEnumerable<TEntity>> GetAsync();
 
-        Task<TEntity> GetByIdAsync<T>(Guid? id) where T : class;
+        TEntity GetById<T>(Guid? id) where T : class;
 
         //Task InsertAsync(TEntity item);
 

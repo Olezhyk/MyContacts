@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Build.Framework;
 
-namespace MyContacts.Services.ServiceImplementation
+namespace MyContacts.BusinessLogic.Services.ServiceImplementation
 {
     public abstract class BaseService
     {

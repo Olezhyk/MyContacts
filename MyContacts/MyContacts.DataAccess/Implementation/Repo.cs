@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Threading.Tasks;
 using MyContacts.DataAccess.Context;
+using MyContacts.DataAccess.Interfaces;
 
 namespace MyContacts.DataAccess.Implementation
 {
@@ -29,9 +30,9 @@ namespace MyContacts.DataAccess.Implementation
         //    throw new NotImplementedException();
         //}
 
-        public Task<TEntity> GetByIdAsync<T>(Guid? id) where T : class
+        public TEntity GetById<T>(Guid? id) where T : class
         {
-            return context.Set<TEntity>().FindAsync(id);
+            return context.Set<TEntity>().Find(id);
         }
 
         //public Task InsertAsync(TEntity item)

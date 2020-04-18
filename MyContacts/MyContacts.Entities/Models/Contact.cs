@@ -51,5 +51,7 @@ namespace MyContacts.Entities.Models
 
         [StringLength(100)]
         public string Web_site { get; set; }
+        
+        public virtual Company Company { get; set; }
     }
 }

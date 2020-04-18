@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using MyContacts.Entities.Models;
 
-namespace MyContacts.Services.ServiceInterfaces
+namespace MyContacts.BusinessLogic.Services.ServiceInterfaces
 {
     public interface IContactService
     {
-        Task<Contact> GetByKey(Guid? key);
+        Contact GetByKey(Guid? key);
     }
 }
