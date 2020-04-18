@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyContacts", "MyContacts\My
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyContacts.Tests", "MyContacts.Tests\MyContacts.Tests.csproj", "{C4BA804A-A6F2-4773-A22A-B2E38F5F95D1}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MyContacts.Database", "MyContacts.Database\MyContacts.Database.sqlproj", "{4457309B-DF22-412C-B15F-F7028BEAD7E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{C4BA804A-A6F2-4773-A22A-B2E38F5F95D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4BA804A-A6F2-4773-A22A-B2E38F5F95D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4BA804A-A6F2-4773-A22A-B2E38F5F95D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4457309B-DF22-412C-B15F-F7028BEAD7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4457309B-DF22-412C-B15F-F7028BEAD7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4457309B-DF22-412C-B15F-F7028BEAD7E8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4457309B-DF22-412C-B15F-F7028BEAD7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4457309B-DF22-412C-B15F-F7028BEAD7E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4457309B-DF22-412C-B15F-F7028BEAD7E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

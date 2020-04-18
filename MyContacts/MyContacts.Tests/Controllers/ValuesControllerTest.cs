@@ -7,6 +7,7 @@ using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyContacts;
 using MyContacts.Controllers;
+using MyContacts.Controllers.ApiControllers;
 
 namespace MyContacts.Tests.Controllers
 {
@@ -24,7 +25,7 @@ namespace MyContacts.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual("", result.Count());
             Assert.AreEqual("value1", result.ElementAt(0));
             Assert.AreEqual("value2", result.ElementAt(1));
         }
