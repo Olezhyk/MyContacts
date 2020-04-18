@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
+using MyContacts.Entities.Models;
 
 namespace MyContacts.Services.ServiceInterfaces
 {
     public interface IContactService
     {
-        Contact GetByKey(Guid? key);
+        Task<Contact> GetByKey(Guid? key);
     }
 }

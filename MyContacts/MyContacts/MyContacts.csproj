@@ -353,6 +353,16 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyContacts.DataAccess\MyContacts.DataAccess.csproj">
+      <Project>{2E7250AF-3508-428E-9D29-638178822D17}</Project>
+      <Name>MyContacts.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyContacts.Entities\MyContacts.Entities.csproj">
+      <Project>{1602D457-9A57-468E-9F8F-575530438DE9}</Project>
+      <Name>MyContacts.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

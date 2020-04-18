@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
-using MyContacts.Models;
 
 namespace MyContacts.Controllers.ApiControllers
 {

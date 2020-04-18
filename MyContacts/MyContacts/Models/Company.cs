@@ -1,40 +1,40 @@
-namespace MyContacts
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+//namespace MyContacts
+//{
+//    using System;
+//    using System.Collections.Generic;
+//    using System.ComponentModel.DataAnnotations;
+//    using System.ComponentModel.DataAnnotations.Schema;
+//    using System.Data.Entity.Spatial;
 
-    public partial class Company
-    {
-        [Key]
-        public Guid Company_key { get; set; }
+//    public partial class Company
+//    {
+//        [Key]
+//        public Guid Company_key { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string Company_name { get; set; }
+//        [Required]
+//        [StringLength(100)]
+//        public string Company_name { get; set; }
 
-        public Guid? Created_by { get; set; }
+//        public Guid? Created_by { get; set; }
 
-        public DateTime? Created_date { get; set; }
+//        public DateTime? Created_date { get; set; }
 
-        public Guid? Modified_by { get; set; }
+//        public Guid? Modified_by { get; set; }
 
-        public DateTime? Modified_date { get; set; }
+//        public DateTime? Modified_date { get; set; }
 
-        public Guid Address_key { get; set; }
+//        public Guid Address_key { get; set; }
 
-        [StringLength(25)]
-        public string Phone { get; set; }
+//        [StringLength(25)]
+//        public string Phone { get; set; }
 
-        [StringLength(25)]
-        public string Fax { get; set; }
+//        [StringLength(25)]
+//        public string Fax { get; set; }
 
-        [StringLength(100)]
-        public string Email { get; set; }
+//        [StringLength(100)]
+//        public string Email { get; set; }
 
-        [StringLength(100)]
-        public string Web_site { get; set; }
-    }
-}
+//        [StringLength(100)]
+//        public string Web_site { get; set; }
+//    }
+//}
