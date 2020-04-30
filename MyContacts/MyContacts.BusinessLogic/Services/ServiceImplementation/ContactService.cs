@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Build.Framework;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
@@ -8,13 +9,17 @@ using MyContacts.Entities.Models;
 
 namespace MyContacts.BusinessLogic.Services.ServiceImplementation
 {
-    public class ContactService : BaseService, IContactService
+    public class ContactService : IContactService
     {
         private readonly IRepo<Contact> _repoContact;
-        public ContactService(ILogger logger, IRepo<Contact> repoContact) : base(logger)
+
+        public ContactService(IRepo<Contact> repoContact)
         {
             _repoContact = repoContact;
         }
+
+        public IQueryable<Contact> Contacts => _repoContact.Contacts;
+
         public Contact GetByKey(Guid? key)
         {
             var contact = _repoContact.GetById<Contact>(key);

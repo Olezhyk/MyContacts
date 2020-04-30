@@ -1,0 +1,129 @@
+﻿@model IEnumerable<MyContacts.Entities.Models.Contact>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Company.Company_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_key)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mreated_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Full_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address_key)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Home)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Web_site)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company.Company_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_key)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mreated_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Full_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.First_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address_key)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Home)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Web_site)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Contact_key }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Contact_key }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Contact_key })
+        </td>
+    </tr>
+}
+
+</table>

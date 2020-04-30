@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using MyContacts.DataAccess.Context;
 using MyContacts.DataAccess.Interfaces;
+using MyContacts.Entities.Models;
 
 namespace MyContacts.DataAccess.Implementation
 {
@@ -29,6 +31,8 @@ namespace MyContacts.DataAccess.Implementation
         //{
         //    throw new NotImplementedException();
         //}
+
+        public IQueryable<Contact> Contacts => context.Contacts;
 
         public TEntity GetById<T>(Guid? id) where T : class
         {

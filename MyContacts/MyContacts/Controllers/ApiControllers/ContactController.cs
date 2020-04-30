@@ -1,41 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Web.Http;
-using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
+using MyContacts.BusinessLogic.Mapper;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
 using MyContacts.BusinessLogic.ViewModels;
-
-//using Tools.VcfProvider.VcfProvider;
-
+using MyContacts.DataAccess.Interfaces;
 
 namespace MyContacts.Controllers.ApiControllers
 {
     public class ContactController : ApiController
     {
-        private readonly IContactService _contactService;
-        private readonly IContactMapper _contactMapper;
+        private IContactService contactService;
 
-        public ContactController(IContactService contactService, IContactMapper contactMapper)
+        public ContactController(IContactService contactService)
         {
-            this._contactService = contactService;
-            this._contactMapper = contactMapper;
+            this.contactService = contactService;
         }
-
-        #region Get Methods
 
         [HttpGet]
         public HttpResponseMessage GetByKey(Guid key)
         {
-            var data = _contactService.GetByKey(key);
+            var contact = contactService.GetByKey(key);
 
-            if (data == null)
+            if (contact == null)
             {
                 return null;
             }
 
-            var model = _contactMapper.MapContactToContactViewModel(data);
+            var model = ContactMapper.MapContactToContactViewModel(contact);
 
             return new HttpResponseMessage
             {
@@ -43,6 +39,5 @@ namespace MyContacts.Controllers.ApiControllers
                 StatusCode = HttpStatusCode.OK
             };
         }
-        #endregion
     }
 }

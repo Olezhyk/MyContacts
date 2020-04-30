@@ -6,9 +6,9 @@ using MyContacts.Entities.Models;
 
 namespace MyContacts.BusinessLogic.Mapper
 {
-    public class ContactMapper : IContactMapper
+    public class ContactMapper
     {
-        public ContactViewModel MapContactToContactViewModel(Contact entity)
+        public static ContactViewModel MapContactToContactViewModel(Contact entity)
         {
             ContactViewModel model = null;
             if (entity != null)
