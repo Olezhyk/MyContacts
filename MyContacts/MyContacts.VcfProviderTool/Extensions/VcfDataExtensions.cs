@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MyContacts.VcfProviderTool.Models;
+using MyContacts.VcfProvider.Models;
 
-namespace MyContacts.VcfProviderTool.Extensions
+namespace MyContacts.VcfProvider.Extensions
 {
     public static class VcfDataExtensions
     {

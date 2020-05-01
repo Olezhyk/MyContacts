@@ -1,7 +1,7 @@
 ﻿using System;
-using MyContacts.VcfProviderTool.Interfaces;
+using MyContacts.VcfProvider.Interfaces;
 
-namespace MyContacts.VcfProviderTool.VcfProvider
+namespace MyContacts.VcfProvider.VcfProvider
 {
     public static class VcfProviderFactory
     {

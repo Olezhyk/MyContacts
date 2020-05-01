@@ -1,6 +1,6 @@
-﻿using MyContacts.VcfProviderTool.Models;
+﻿using MyContacts.VcfProvider.Models;
 
-namespace MyContacts.VcfProviderTool.Interfaces
+namespace MyContacts.VcfProvider.Interfaces
 {
     public interface IVcfProvider
     {

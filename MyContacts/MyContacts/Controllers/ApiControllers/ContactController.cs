@@ -13,8 +13,8 @@ using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
 using MyContacts.BusinessLogic.ViewModels;
 using MyContacts.DataAccess.Interfaces;
-using MyContacts.VcfProviderTool.Extensions;
-using MyContacts.VcfProviderTool.VcfProvider;
+using MyContacts.VcfProvider.Extensions;
+using MyContacts.VcfProvider.VcfProvider;
 
 namespace MyContacts.Controllers.ApiControllers
 {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using MyContacts.BusinessLogic.ViewModels;
 using MyContacts.Entities.Models;
-using MyContacts.VcfProviderTool.Models;
+using MyContacts.VcfProvider.Models;
 
 namespace MyContacts.BusinessLogic.Mapper.MapperInterfaces
 {

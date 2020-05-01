@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MyContacts.VcfProviderTool.VcfProvider
+namespace MyContacts.VcfProvider.VcfProvider
 {
     internal static class DictionaryExtensions
     {

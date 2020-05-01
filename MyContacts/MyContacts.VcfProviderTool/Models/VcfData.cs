@@ -1,4 +1,4 @@
-﻿namespace MyContacts.VcfProviderTool.Models
+﻿namespace MyContacts.VcfProvider.Models
 {
     public class VcfData
     {

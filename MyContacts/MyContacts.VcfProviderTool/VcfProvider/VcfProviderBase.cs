@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using MyContacts.VcfProviderTool.Models;
+using MyContacts.VcfProvider.Models;
 
-namespace MyContacts.VcfProviderTool.VcfProvider
+namespace MyContacts.VcfProvider.VcfProvider
 {
     public class VcfProviderBase
     {

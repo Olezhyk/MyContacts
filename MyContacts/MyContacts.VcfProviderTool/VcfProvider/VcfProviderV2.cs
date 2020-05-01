@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using MyContacts.VcfProviderTool.Interfaces;
-using MyContacts.VcfProviderTool.Models;
+using MyContacts.VcfProvider.VcfProvider;
+using MyContacts.VcfProvider.Interfaces;
+using MyContacts.VcfProvider.Models;
 
-namespace MyContacts.VcfProviderTool.VcfProvider
+namespace MyContacts.VcfProvider.VcfProvider
 {
     public class VcfProviderV2 : VcfProviderBase, IVcfProvider
     {

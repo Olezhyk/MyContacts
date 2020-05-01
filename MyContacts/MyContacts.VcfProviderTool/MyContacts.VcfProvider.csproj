@@ -7,8 +7,8 @@
     <ProjectGuid>{08B35845-3FEA-4369-8C0D-E0A3D979E2A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyContacts.VcfProviderTool</RootNamespace>
-    <AssemblyName>MyContacts.VcfProviderTool</AssemblyName>
+    <RootNamespace>MyContacts.VcfProvider</RootNamespace>
+    <AssemblyName>MyContacts.VcfProvider</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

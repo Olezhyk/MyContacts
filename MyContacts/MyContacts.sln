@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyContacts.Entities", "MyCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyContacts.BusinessLogic", "MyContacts.BusinessLogic\MyContacts.BusinessLogic.csproj", "{CDCC43F6-12A9-421A-9186-5521D3D18E9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyContacts.VcfProviderTool", "MyContacts.VcfProviderTool\MyContacts.VcfProviderTool.csproj", "{08B35845-3FEA-4369-8C0D-E0A3D979E2A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyContacts.VcfProvider", "MyContacts.VcfProviderTool\MyContacts.VcfProvider.csproj", "{08B35845-3FEA-4369-8C0D-E0A3D979E2A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

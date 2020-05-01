@@ -159,9 +159,9 @@
       <Project>{1602D457-9A57-468E-9F8F-575530438DE9}</Project>
       <Name>MyContacts.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MyContacts.VcfProviderTool\MyContacts.VcfProviderTool.csproj">
+    <ProjectReference Include="..\MyContacts.VcfProviderTool\MyContacts.VcfProvider.csproj">
       <Project>{08B35845-3FEA-4369-8C0D-E0A3D979E2A5}</Project>
-      <Name>MyContacts.VcfProviderTool</Name>
+      <Name>MyContacts.VcfProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,4 +1,4 @@
-﻿namespace MyContacts.VcfProviderTool.Enumerations
+﻿namespace MyContacts.VcfProvider.Enumerations
 {
     public enum VcfVersion : int
     {
