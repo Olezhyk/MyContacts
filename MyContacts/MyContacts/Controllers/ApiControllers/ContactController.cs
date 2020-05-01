@@ -8,6 +8,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
+using MyContacts.BusinessLogic.Log;
 using MyContacts.BusinessLogic.Mapper;
 using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
@@ -20,14 +21,16 @@ namespace MyContacts.Controllers.ApiControllers
 {
     public class ContactController : ApiController
     {
-        private IContactService contactService;
+        private readonly ILogger logger;
+        private readonly IContactService contactService;
 
-        private IContactMapper contactMapper;
+        private readonly IContactMapper contactMapper;
 
-        public ContactController(IContactService contactService, IContactMapper contactMapper)
+        public ContactController(IContactService contactService, IContactMapper contactMapper, ILogger logger)
         {
             this.contactService = contactService;
             this.contactMapper = contactMapper;
+            this.logger = logger;
         }
 
         #region Get Methods
@@ -155,8 +158,8 @@ namespace MyContacts.Controllers.ApiControllers
                 }
                 catch (Exception ex)
                 {
-                    //_logger.Error(ex, "An  Error Occurred During saving Contact. Error: {0}", ex.Message);
-                    //_logger.Error("StackTrace: {0}", ex.StackTrace);
+                    logger.Error(ex, "An  Error Occurred During saving Contact. Error: {0}", ex.Message);
+                    logger.Error("StackTrace: {0}", ex.StackTrace);
 
                     return new HttpResponseMessage
                     {
