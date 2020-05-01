@@ -4,12 +4,13 @@ using System.Threading.Tasks;
 using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
 using MyContacts.BusinessLogic.ViewModels;
 using MyContacts.Entities.Models;
+using MyContacts.VcfProviderTool.Models;
 
 namespace MyContacts.BusinessLogic.Mapper
 {
-    public class ContactMapper
+    public class ContactMapper : IContactMapper
     {
-        public static ContactViewModel MapContactToContactViewModel(Contact entity)
+        public ContactViewModel MapContactToContactViewModel(Contact entity)
         {
             ContactViewModel model = null;
             if (entity != null)
@@ -33,7 +34,46 @@ namespace MyContacts.BusinessLogic.Mapper
             return model;
         }
 
-        public static Contact MapEditContactViewModelToEntity(ContactViewModel model, Contact contact)
+        public VcfData MapContactToVcf(Contact entity)
+        {
+            VcfData vcfData = null;
+
+            if (entity != null)
+            {
+                vcfData = new VcfData
+                {
+                    FirstName = entity.First_name,
+                    LastName = entity.Last_name,
+                    //Greeting = entity.greeting,
+                    //Title = entity.title,
+                    //CountryName = entity.main_address_info?.country_key,
+                    //ZipCode = entity.main_address_info?.zip_code,
+                    //Address1 = entity.main_address_info?.address_1,
+                    //Address2 = entity.main_address_info?.address_2,
+                    //City = entity.main_address_info?.city,
+                    //State = entity.main_address_info?.state,
+                    //WorkPhone = entity.work,
+                    //HomePhone = entity.home,
+                    //Email = entity.email,
+                    //Mobile = entity.mobile,
+                    //FullName = entity.full_name,
+                    //WebSite = entity.web_site,
+                    //Fax = entity.fax,
+                    //CompanyName = entity.company_info != null
+                    //    ? entity.company_info.address_info != null &&
+                    //      entity.company_info.address_info.company != null
+                    //        ? entity.company_info.address_info.company
+                    //        : entity.company_info.organization_id
+                    //    : entity.main_address_info != null
+                    //        ? entity.main_address_info.company
+                    //        : null
+                };
+            }
+
+            return vcfData;
+        }
+
+        public Contact MapEditContactViewModelToEntity(ContactViewModel model, Contact entity)
         {
             throw new NotImplementedException();
         }

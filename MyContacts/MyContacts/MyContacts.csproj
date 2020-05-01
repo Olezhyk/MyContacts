@@ -371,7 +371,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Contact\List.cshtml" />
-    <Content Include="Views\Contact\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -399,6 +398,10 @@
     <ProjectReference Include="..\MyContacts.Entities\MyContacts.Entities.csproj">
       <Project>{1602D457-9A57-468E-9F8F-575530438DE9}</Project>
       <Name>MyContacts.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyContacts.VcfProviderTool\MyContacts.VcfProviderTool.csproj">
+      <Project>{08B35845-3FEA-4369-8C0D-E0A3D979E2A5}</Project>
+      <Name>MyContacts.VcfProviderTool</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

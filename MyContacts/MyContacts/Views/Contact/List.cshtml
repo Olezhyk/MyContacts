@@ -6,10 +6,13 @@
 
 <h2>My Contacts</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="container mb-3 mt-3">
+    <button type="button" class="btn btn-primary btn-add-new search-row-add-new" title="Add New" data-object-type="contact">
+        <span class="hidden-xxs-down">
+            Add New Contact
+        </span>
+        <i class="fa fa-plus hidden-xxs-up" aria-hidden="true"></i>
+    </button>
     <table class="table table-striped table-bordered mydatatable" style="width: 100%">
         <thead>
             <tr>
@@ -72,14 +75,14 @@
                         @*@Html.ActionLink("Details", "Details", new { id = item.Contact_key })*@
                         @*@Html.ActionLink("Edit", "Edit", new { id = item.Contact_key })
                             @Html.ActionLink("Delete", "Delete", new { id = item.Contact_key })*@
-                        <button type="button" class="btn btn-primary btn-delete">
-                            <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+                        <button type="button" class="btn btn-primary btn-details" title="Details">
+                            <i class="fas fa-address-card" aria-hidden="true"></i>
                         </button>
-                        <button type="button" class="btn btn-primary btn-delete">
-                            <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+                        <button type="button" class="btn btn-primary btn-edit" title="Edit">
+                            <i class="fas fa-edit" aria-hidden="true"></i>
                         </button>
-                        <button type="button" class="btn btn-primary btn-delete">
-                            <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+                        <button type="button" class="btn btn-primary btn-delete" title="Delete">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                     </td>
                 </tr>

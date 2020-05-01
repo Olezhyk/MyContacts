@@ -12,6 +12,7 @@ namespace MyContacts.Controllers.MvcControllers
     public class ContactController : Controller
     {
         private IContactService _contactService;
+        
         public ContactController(IContactService contactService)
         {
             this._contactService = contactService;
@@ -20,11 +21,6 @@ namespace MyContacts.Controllers.MvcControllers
         public ViewResult List()
         {
             return View(_contactService.Get());
-        }
-
-        public ActionResult Create()
-        {
-            return View();
         }
     }
 }

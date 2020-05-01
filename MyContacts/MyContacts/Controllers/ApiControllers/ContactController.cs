@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
+using System.Web;
 using System.Web.Http;
 using MyContacts.BusinessLogic.Mapper;
+using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
 using MyContacts.BusinessLogic.ViewModels;
 using MyContacts.DataAccess.Interfaces;
+using MyContacts.VcfProviderTool.Extensions;
+using MyContacts.VcfProviderTool.VcfProvider;
 
 namespace MyContacts.Controllers.ApiControllers
 {
@@ -16,9 +22,12 @@ namespace MyContacts.Controllers.ApiControllers
     {
         private IContactService contactService;
 
-        public ContactController(IContactService contactService)
+        private IContactMapper contactMapper;
+
+        public ContactController(IContactService contactService, IContactMapper contactMapper)
         {
             this.contactService = contactService;
+            this.contactMapper = contactMapper;
         }
 
         #region Get Methods
@@ -32,7 +41,7 @@ namespace MyContacts.Controllers.ApiControllers
                 return null;
             }
 
-            var model = ContactMapper.MapContactToContactViewModel(contact);
+            var model = contactMapper.MapContactToContactViewModel(contact);
 
             return new HttpResponseMessage
             {
@@ -40,6 +49,85 @@ namespace MyContacts.Controllers.ApiControllers
                 StatusCode = HttpStatusCode.OK
             };
         }
+
+        [HttpGet]
+        public HttpResponseMessage GetVCardData(Guid key, string version)
+        {
+            try
+            {
+                var contactInfo = contactService.GetByKey(key);
+                if (contactInfo != null)
+                {
+                    var info = contactMapper.MapContactToVcf(contactInfo);
+
+                    var fileContent = VcfProviderFactory.GetVcfInstance(version).CreateByteArray(info);
+
+                    if (fileContent != null)
+                    {
+                        var fileName = info.FullName ?? "VCard";
+                        string filePath = $"{fileName}.vcf";
+
+                        HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+                        response.Content = new StreamContent(new MemoryStream(fileContent));
+                        response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                        response.Content.Headers.ContentDisposition.FileName = Path.GetFileName(filePath);
+                        response.Content.Headers.ContentType =
+                            new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(filePath));
+
+                        return response;
+                    }
+
+                    return new HttpResponseMessage(HttpStatusCode.NoContent);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage
+                {
+                    Content = new ObjectContent(typeof(String), ex.Message, new JsonMediaTypeFormatter()),
+                    StatusCode = HttpStatusCode.InternalServerError
+                };
+            }
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetAddressData(Guid key)
+        {
+            try
+            {
+                var contact = contactService.GetByKey(key);
+                if (contact != null)
+                {
+                    var info = contactMapper.MapContactToVcf(contact);
+
+                    var stringData = info.GetVcfAddress();
+
+                    if (!string.IsNullOrEmpty(stringData))
+                    {
+                        return new HttpResponseMessage
+                        {
+                            StatusCode = HttpStatusCode.OK,
+                            Content = new ObjectContent(typeof(string), stringData, new JsonMediaTypeFormatter())
+                        };
+                    }
+
+                    return new HttpResponseMessage(HttpStatusCode.NoContent);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage
+                {
+                    Content = new ObjectContent(typeof(String), ex.Message, new JsonMediaTypeFormatter()),
+                    StatusCode = HttpStatusCode.InternalServerError
+                };
+            }
+        }
+
         #endregion
 
         #region Post Methods
@@ -53,11 +141,11 @@ namespace MyContacts.Controllers.ApiControllers
                 {
                     var contact = contactService.GetByKey(model.ContactKey);
                     
-                    contact = ContactMapper.MapEditContactViewModelToEntity(model, contact);
+                    contact = contactMapper.MapEditContactViewModelToEntity(model, contact);
 
                     contactService.Save(contact);
                     
-                    var retModel = ContactMapper.MapContactToContactViewModel(contact);
+                    var retModel = contactMapper.MapContactToContactViewModel(contact);
                     
                     return new HttpResponseMessage
                     {
