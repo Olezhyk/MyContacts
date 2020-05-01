@@ -44,7 +44,7 @@ namespace MyContacts
             // container.LoadConfiguration();
 
             container.RegisterType<IContactService, ContactService>();
-            container.RegisterType(typeof(IRepo<>), typeof(Repo<>));
+            container.RegisterType(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }

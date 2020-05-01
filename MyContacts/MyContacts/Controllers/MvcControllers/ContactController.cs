@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MyContacts.BusinessLogic.Log;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
+using MyContacts.Entities.Models;
 
 namespace MyContacts.Controllers.MvcControllers
 {
@@ -18,7 +19,12 @@ namespace MyContacts.Controllers.MvcControllers
 
         public ViewResult List()
         {
-            return View(_contactService.Contacts);
+            return View(_contactService.Get());
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
     }
 }

@@ -7,7 +7,14 @@ namespace MyContacts.BusinessLogic.Services.ServiceInterfaces
 {
     public interface IContactService
     {
-        IQueryable<Contact> Contacts { get; }
+        IQueryable<Contact> Get();
+
         Contact GetByKey(Guid? key);
+
+        void Save(Contact entity);
+
+        void Update(Contact entity);
+
+        void Delete(Contact entity);
     }
 }

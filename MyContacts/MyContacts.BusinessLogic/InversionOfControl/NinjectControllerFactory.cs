@@ -29,7 +29,7 @@ namespace MyContacts.BusinessLogic.InversionOfControl
         private void AddBindings()
         {
             ninjectKernel.Bind<IContactService>().To<ContactService>();
-            ninjectKernel.Bind(typeof(IRepo<>)).To(typeof(Repo<>));
+            ninjectKernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
         }
     }
 }

@@ -148,6 +148,7 @@
     <Compile Include="Services\ServiceImplementation\ContactService.cs" />
     <Compile Include="Services\ServiceInterfaces\IContactService.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\DeleteObjectResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyContacts.DataAccess\MyContacts.DataAccess.csproj">

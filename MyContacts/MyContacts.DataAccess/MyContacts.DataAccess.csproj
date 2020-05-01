@@ -52,8 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\MyContactsContext.cs" />
-    <Compile Include="Implementation\Repo.cs" />
-    <Compile Include="Interfaces\IRepo.cs" />
+    <Compile Include="Implementation\Repository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

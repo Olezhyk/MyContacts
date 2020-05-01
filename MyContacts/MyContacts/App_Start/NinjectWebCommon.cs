@@ -68,7 +68,7 @@ namespace MyContacts
         {
             // This is where we tell Ninject how to resolve service requests
             kernel.Bind<IContactService>().To<ContactService>();
-            kernel.Bind(typeof(IRepo<>)).To(typeof(Repo<>));
+            kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
         }
     }
 

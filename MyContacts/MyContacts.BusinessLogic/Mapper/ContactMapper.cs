@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
 using MyContacts.BusinessLogic.ViewModels;
@@ -30,6 +31,11 @@ namespace MyContacts.BusinessLogic.Mapper
             }
 
             return model;
+        }
+
+        public static Contact MapEditContactViewModelToEntity(ContactViewModel model, Contact contact)
+        {
+            throw new NotImplementedException();
         }
     }
 }
