@@ -9,15 +9,7 @@ namespace MyContacts.Entities.Models
         public Guid Contact_key { get; set; }
 
         public Guid User_key { get; set; }
-
-        public Guid? Created_by { get; set; }
-
-        public DateTime? Mreated_date { get; set; }
-
-        public Guid? Modified_by { get; set; }
-
-        public DateTime? Modified_date { get; set; }
-
+        
         public Guid? Company_key { get; set; }
 
         [StringLength(100)]

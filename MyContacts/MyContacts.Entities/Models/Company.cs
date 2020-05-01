@@ -11,15 +11,7 @@ namespace MyContacts.Entities.Models
         [Required]
         [StringLength(100)]
         public string Company_name { get; set; }
-
-        public Guid? Created_by { get; set; }
-
-        public DateTime? Created_date { get; set; }
-
-        public Guid? Modified_by { get; set; }
-
-        public DateTime? Modified_date { get; set; }
-
+        
         public Guid Address_key { get; set; }
 
         [StringLength(25)]

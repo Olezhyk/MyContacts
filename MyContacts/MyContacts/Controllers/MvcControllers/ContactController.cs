@@ -20,7 +20,7 @@ namespace MyContacts.Controllers.MvcControllers
 
         public ViewResult List()
         {
-            return View(_contactService.Get());
+            return View(_contactService.Get().ToList());
         }
     }
 }
