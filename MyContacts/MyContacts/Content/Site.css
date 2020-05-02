@@ -15,3 +15,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.btn.btn-details, .btn.btn-edit, .btn.btn-delete {
+    margin: -5px;
+}

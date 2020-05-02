@@ -1,4 +1,15 @@
-﻿
+﻿$('.btn-add-new').unbind('click').click(function () {
+    $('#contactAdd').modal('show'); 
+});
+
+$('.btn-edit').unbind('click').click(function () {
+    $('#contactEdit').modal('show');
+});
+
+$('.btn-delete').unbind('click').click(function () {
+    $('#contactDelete').modal('show'); 
+});
+
 $('.btn-load-vcard').unbind('click').click(function () {
     var btnObj = $(this);
 
