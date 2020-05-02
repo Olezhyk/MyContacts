@@ -37,20 +37,96 @@ namespace MyContacts.Controllers.ApiControllers
         [HttpGet]
         public HttpResponseMessage GetByKey(Guid key)
         {
-            var contact = contactService.GetByKey(key);
-
-            if (contact == null)
+            try
             {
-                return null;
+                var contact = contactService.GetByKey(key);
+
+                if (contact == null)
+                {
+                    return null;
+                }
+
+                var model = contactMapper.MapContactToContactViewModel(contact);
+
+                return new HttpResponseMessage
+                {
+                    Content = new ObjectContent<ContactViewModel>(model, new JsonMediaTypeFormatter()),
+                    StatusCode = HttpStatusCode.OK
+                };
             }
-
-            var model = contactMapper.MapContactToContactViewModel(contact);
-
-            return new HttpResponseMessage
+            catch (Exception ex)
             {
-                Content = new ObjectContent<ContactViewModel>(model, new JsonMediaTypeFormatter()),
-                StatusCode = HttpStatusCode.OK
-            };
+                return new HttpResponseMessage
+                {
+                    Content = new ObjectContent(typeof(String), ex.Message, new JsonMediaTypeFormatter()),
+                    StatusCode = HttpStatusCode.InternalServerError,
+                };
+            }
+        }
+
+        [HttpGet]
+        public HttpResponseMessage Add()
+        {
+            try
+            {
+                var newContactViewModel =
+                    new ContactViewModel
+                    {
+                        ContactKey = Guid.NewGuid()
+                    };
+
+                return new HttpResponseMessage
+                {
+                    Content = new ObjectContent<ContactViewModel>(newContactViewModel, new JsonMediaTypeFormatter()),
+                    StatusCode = HttpStatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage
+                {
+                    Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter()),
+                    StatusCode = HttpStatusCode.InternalServerError,
+                };
+            }
+        }
+
+        [HttpGet]
+        public HttpResponseMessage Edit(Guid? key)
+        {
+            try
+            {
+                var contact = contactService.GetByKey(key);
+                if (contact != null)
+                {
+                    var model = contactMapper.MapContactToContactViewModel(contact);
+                    return new HttpResponseMessage
+                    {
+                        Content = new ObjectContent<ContactViewModel>(model, new JsonMediaTypeFormatter()),
+                        StatusCode = HttpStatusCode.OK
+                    };
+                }
+
+                var newContactViewModel =
+                    new ContactViewModel
+                    {
+                        ContactKey = Guid.NewGuid()
+                    };
+
+                return new HttpResponseMessage
+                {
+                    Content = new ObjectContent<ContactViewModel>(newContactViewModel, new JsonMediaTypeFormatter()),
+                    StatusCode = HttpStatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage
+                {
+                    Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter()),
+                    StatusCode = HttpStatusCode.InternalServerError,
+                };
+            }
         }
 
         [HttpGet]
@@ -143,13 +219,13 @@ namespace MyContacts.Controllers.ApiControllers
                 try
                 {
                     var contact = contactService.GetByKey(model.ContactKey);
-                    
+
                     contact = contactMapper.MapEditContactViewModelToEntity(model, contact);
 
                     contactService.Save(contact);
-                    
+
                     var retModel = contactMapper.MapContactToContactViewModel(contact);
-                    
+
                     return new HttpResponseMessage
                     {
                         Content = new ObjectContent(typeof(ContactViewModel), retModel, new JsonMediaTypeFormatter()),
@@ -184,9 +260,9 @@ namespace MyContacts.Controllers.ApiControllers
                     if (contactInfo != null)
                     {
                         contactService.Delete(contactInfo);
-                        
+
                         var retModel = new DeleteObjectResponseModel { IsSuccess = true };
-                        
+
                         return new HttpResponseMessage
                         {
                             Content = new ObjectContent(typeof(DeleteObjectResponseModel), retModel, new JsonMediaTypeFormatter()),

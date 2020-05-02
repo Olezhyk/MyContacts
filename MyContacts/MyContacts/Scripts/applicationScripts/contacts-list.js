@@ -1,9 +1,28 @@
 ﻿$('.btn-add-new').unbind('click').click(function () {
-    $('#contactAdd').modal('show'); 
+
+    $.ajax({
+        Type: 'GET',
+        url: '/api/contact/Add',
+        dataType: 'json',
+        success: function (response) {
+            var addContactDialog = $('#contactAdd');
+            $('input[name="Key"]', addContactDialog).val(response.ContactKey);
+            $('#contactAdd').modal('show');
+        },
+        error: function (textStatus) {
+            alert(textStatus);
+        }
+    });
+    
 });
 
 $('.btn-edit').unbind('click').click(function () {
     $('#contactEdit').modal('show');
+    
+});
+
+$('.btn-save').unbind('click').click(function() {
+    
 });
 
 $('.btn-delete').unbind('click').click(function () {
