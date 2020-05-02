@@ -49,5 +49,7 @@ namespace MyContacts.Entities.Models
         public string Web_site { get; set; }
         
         public virtual Company Company { get; set; }
+
+        public virtual Address Address { get; set; }
     }
 }

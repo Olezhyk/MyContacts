@@ -37,6 +37,7 @@ namespace MyContacts.VcfProvider.Extensions
             if (!string.IsNullOrEmpty(data.City)) addressParts.Add(data.City);
             var stateZipParts = new List<string>();
 
+            if (!string.IsNullOrEmpty(data.CountryName)) stateZipParts.Add(data.CountryName);
             if (!string.IsNullOrEmpty(data.State)) stateZipParts.Add(data.State);
             if (!string.IsNullOrEmpty(data.ZipCode)) stateZipParts.Add(data.ZipCode);
 
