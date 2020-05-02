@@ -1,4 +1,7 @@
 using System;
+using MyContacts.BusinessLogic.Log;
+using MyContacts.BusinessLogic.Mapper;
+using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
 using MyContacts.BusinessLogic.Services.ServiceImplementation;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
 using MyContacts.DataAccess.Implementation;
@@ -44,6 +47,8 @@ namespace MyContacts
             // container.LoadConfiguration();
 
             container.RegisterType<IContactService, ContactService>();
+            container.RegisterType<IContactMapper, ContactMapper>();
+            container.RegisterType<ILogger, NLogLogger>();
             container.RegisterType(typeof(IRepository<>), typeof(Repository<>));
         }
     }

@@ -44,29 +44,21 @@ namespace MyContacts.BusinessLogic.Mapper
                 {
                     FirstName = entity.First_name,
                     LastName = entity.Last_name,
-                    //Greeting = entity.greeting,
-                    //Title = entity.title,
-                    //CountryName = entity.main_address_info?.country_key,
+                    Title = entity.Title,
+                    //CountryName = entity.Company.ad,
                     //ZipCode = entity.main_address_info?.zip_code,
                     //Address1 = entity.main_address_info?.address_1,
                     //Address2 = entity.main_address_info?.address_2,
                     //City = entity.main_address_info?.city,
                     //State = entity.main_address_info?.state,
-                    //WorkPhone = entity.work,
-                    //HomePhone = entity.home,
-                    //Email = entity.email,
-                    //Mobile = entity.mobile,
-                    //FullName = entity.full_name,
-                    //WebSite = entity.web_site,
-                    //Fax = entity.fax,
-                    //CompanyName = entity.company_info != null
-                    //    ? entity.company_info.address_info != null &&
-                    //      entity.company_info.address_info.company != null
-                    //        ? entity.company_info.address_info.company
-                    //        : entity.company_info.organization_id
-                    //    : entity.main_address_info != null
-                    //        ? entity.main_address_info.company
-                    //        : null
+                    WorkPhone = entity.Phone,
+                    HomePhone = entity.Home,
+                    Email = entity.Email,
+                    Mobile = entity.Mobile,
+                    FullName = entity.Full_name,
+                    WebSite = entity.Web_site,
+                    Fax = entity.Fax,
+                    CompanyName = entity.Company?.Company_name
                 };
             }
 

@@ -4,7 +4,7 @@ using MyContacts.Entities.Models;
 
 namespace MyContacts.DataAccess.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> : IDisposable where TEntity : class
     {
         IQueryable<TEntity> Get<T>();
 
@@ -18,6 +18,6 @@ namespace MyContacts.DataAccess.Interfaces
 
         void Delete(TEntity item);
 
-        void SaveChanges();
+        void SaveChanges(bool withDisposing = false);
     }
 }

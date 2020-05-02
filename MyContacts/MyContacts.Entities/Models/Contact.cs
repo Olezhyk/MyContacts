@@ -13,12 +13,15 @@ namespace MyContacts.Entities.Models
         public Guid? Company_key { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Full Name")]
         public string Full_name { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "First Name")]
         public string First_name { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Last Name")]
         public string Last_name { get; set; }
 
         [StringLength(100)]
@@ -42,6 +45,7 @@ namespace MyContacts.Entities.Models
         public string Email { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Web Site")]
         public string Web_site { get; set; }
         
         public virtual Company Company { get; set; }

@@ -10,6 +10,7 @@ namespace MyContacts.Entities.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Company")]
         public string Company_name { get; set; }
         
         public Guid Address_key { get; set; }

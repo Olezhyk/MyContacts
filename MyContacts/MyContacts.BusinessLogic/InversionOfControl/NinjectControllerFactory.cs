@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using MyContacts.BusinessLogic.Log;
+using MyContacts.BusinessLogic.Mapper;
+using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
 using MyContacts.BusinessLogic.Services.ServiceImplementation;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
 using MyContacts.DataAccess.Implementation;
