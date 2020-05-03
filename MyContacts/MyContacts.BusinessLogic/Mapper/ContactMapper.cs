@@ -23,9 +23,16 @@ namespace MyContacts.BusinessLogic.Mapper
                     Phone = entity.Phone,
                     FullName = entity.Full_name,
                     FirstName = entity.First_name,
+                    LastName = entity.Last_name,
                     Title = entity.Title,
                     WebSite = entity.Web_site,
                     Fax = entity.Fax,
+                    Address1 = entity.Address?.Address_1,
+                    Address2 = entity.Address?.Address_2,
+                    City = entity.Address?.City,
+                    State = entity.Address?.State,
+                    ZipCode = entity.Address?.Zip_code,
+                    Country = entity.Address?.Country,
                     CompanyName = entity.Company?.Company_name
                 };
 

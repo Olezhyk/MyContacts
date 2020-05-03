@@ -1,24 +1,59 @@
 ﻿$('.btn-add-new').unbind('click').click(function () {
-
+    var btnObj = $(this);
+    var dialogTitle = btnObj.attr('title');
+    var key = btnObj.data('objectKey') ? btnObj.data('objectKey') : "";
+    var params = {
+        'key': key
+    };
     $.ajax({
         Type: 'GET',
-        url: '/api/contact/Add',
+        url: '/api/contact/Edit',
         dataType: 'json',
+        data: params,
         success: function (response) {
-            var addContactDialog = $('#contactAdd');
-            $('input[name="Key"]', addContactDialog).val(response.ContactKey);
-            $('#contactAdd').modal('show');
+            var editContactDialog = $('#contactEdit');
+            $('#modalTitle', editContactDialog).html(dialogTitle);
+            $('input[name="Key"]', editContactDialog).val(response.ContactKey);
+            $('#contactEdit').modal('show');
         },
         error: function (textStatus) {
             alert(textStatus);
         }
     });
-    
 });
 
 $('.btn-edit').unbind('click').click(function () {
-    $('#contactEdit').modal('show');
-    
+    var btnObj = $(this);
+    var dialogTitle = btnObj.attr('title');
+    var key = btnObj.data('objectKey') ? btnObj.data('objectKey') : "";
+    var params = {
+        'key': key
+    };
+    $.ajax({
+        Type: 'GET',
+        url: '/api/contact/Edit',
+        dataType: 'json',
+        data: params,
+        success: function (response) {
+            var editContactDialog = $('#contactEdit');
+            $('#modalTitle', editContactDialog).html(dialogTitle);
+            $('input[name="Key"]', editContactDialog).val(response.ContactKey ? response.ContactKey : "");
+
+            $('input[name="FirstName"]', editContactDialog).val(response.FirstName ? response.FirstName : "");
+            $('input[name="LastName"]', editContactDialog).val(response.LastName ? response.LastName : "");
+            $('input[name="Address1"]', editContactDialog).val(response.Address1 ? response.Address1 : "");
+            $('input[name="Address2"]', editContactDialog).val(response.Address2 ? response.Address2 : "");
+            $('input[name="City"]', editContactDialog).val(response.City ? response.City : "");
+            $('input[name="State"]', editContactDialog).val(response.State ? response.State : "");
+            $('input[name="Zip"]', editContactDialog).val(response.ZipCode ? response.ZipCode : "");
+            $('input[name="Email"]', editContactDialog).val(response.Email ? response.Email : "");
+            $('input[name="Phone"]', editContactDialog).val(response.Phone ? response.Phone : "");
+            $('#contactEdit').modal('show');
+        },
+        error: function (textStatus) {
+            alert(textStatus);
+        }
+    });
 });
 
 $('.btn-save').unbind('click').click(function() {

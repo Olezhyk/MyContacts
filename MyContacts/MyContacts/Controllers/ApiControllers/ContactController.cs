@@ -65,33 +65,6 @@ namespace MyContacts.Controllers.ApiControllers
         }
 
         [HttpGet]
-        public HttpResponseMessage Add()
-        {
-            try
-            {
-                var newContactViewModel =
-                    new ContactViewModel
-                    {
-                        ContactKey = Guid.NewGuid()
-                    };
-
-                return new HttpResponseMessage
-                {
-                    Content = new ObjectContent<ContactViewModel>(newContactViewModel, new JsonMediaTypeFormatter()),
-                    StatusCode = HttpStatusCode.OK
-                };
-            }
-            catch (Exception ex)
-            {
-                return new HttpResponseMessage
-                {
-                    Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter()),
-                    StatusCode = HttpStatusCode.InternalServerError,
-                };
-            }
-        }
-
-        [HttpGet]
         public HttpResponseMessage Edit(Guid? key)
         {
             try
