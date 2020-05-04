@@ -26,6 +26,12 @@ namespace MyContacts.BusinessLogic.ViewModels
 
         public string Fax { get; set; }
 
+        public string Home { get; set; }
+
+        public Guid? CompanyKey { get; set; }
+
+        public Guid? AddressKey { get; set; }
+
         public string Address1 { get; set; }
 
         public string Address2 { get; set; }

@@ -74,7 +74,24 @@ namespace MyContacts.BusinessLogic.Mapper
 
         public Contact MapEditContactViewModelToEntity(ContactViewModel model, Contact entity)
         {
-            throw new NotImplementedException();
+            entity = entity ?? new Contact();
+
+            entity.Contact_key = model.ContactKey;
+            entity.Full_name = model.FullName;
+            entity.First_name = model.FirstName;
+            entity.Last_name = model.LastName;
+            entity.Title = model.Title;
+            entity.Phone = model.Phone;
+            entity.Fax = model.Fax;
+            entity.Mobile = model.Mobile;
+            entity.Home = model.Home;
+            entity.Email = model.Email;
+            entity.Web_site = model.WebSite;
+            
+            entity.Company_key = model.CompanyKey;
+            entity.Address_key = model.AddressKey;
+
+            return entity;
         }
     }
 }
