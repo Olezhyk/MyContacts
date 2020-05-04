@@ -27,9 +27,7 @@ $('.btn-save').unbind('click').click(function () {
     $.post(postUrl, $('#saveEditContact').serialize(), function() {
 
         editContactDialog.modal('toggle');
-
-        var table = $('.mydatatable').DataTable();
-        table.draw('page');
+        window.location.reload();
     });
 });
 
