@@ -11,8 +11,8 @@ namespace MyContacts.Controllers.MvcControllers
 {
     public class ContactController : Controller
     {
-        private IContactService _contactService;
-        
+        private readonly IContactService _contactService;
+
         public ContactController(IContactService contactService)
         {
             this._contactService = contactService;
@@ -20,7 +20,8 @@ namespace MyContacts.Controllers.MvcControllers
 
         public ViewResult List()
         {
-            return View(_contactService.Get().ToList());
+            ViewBag.Message = "Hello world!";
+            return View("List", _contactService.Get().ToList());
         }
     }
 }

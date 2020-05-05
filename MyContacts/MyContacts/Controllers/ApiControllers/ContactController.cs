@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
@@ -9,11 +7,9 @@ using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using MyContacts.BusinessLogic.Log;
-using MyContacts.BusinessLogic.Mapper;
 using MyContacts.BusinessLogic.Mapper.MapperInterfaces;
 using MyContacts.BusinessLogic.Services.ServiceInterfaces;
 using MyContacts.BusinessLogic.ViewModels;
-using MyContacts.DataAccess.Interfaces;
 using MyContacts.VcfProvider.Extensions;
 using MyContacts.VcfProvider.VcfProvider;
 
@@ -21,16 +17,16 @@ namespace MyContacts.Controllers.ApiControllers
 {
     public class ContactController : ApiController
     {
-        private readonly ILogger logger;
-        private readonly IContactService contactService;
+        private readonly ILogger _logger;
+        private readonly IContactService _contactService;
 
-        private readonly IContactMapper contactMapper;
+        private readonly IContactMapper _contactMapper;
 
         public ContactController(IContactService contactService, IContactMapper contactMapper, ILogger logger)
         {
-            this.contactService = contactService;
-            this.contactMapper = contactMapper;
-            this.logger = logger;
+            this._contactService = contactService;
+            this._contactMapper = contactMapper;
+            this._logger = logger;
         }
 
         #region Get Methods
@@ -39,14 +35,14 @@ namespace MyContacts.Controllers.ApiControllers
         {
             try
             {
-                var contact = contactService.GetByKey(key);
+                var contact = _contactService.GetByKey(key);
 
                 if (contact == null)
                 {
                     return null;
                 }
 
-                var model = contactMapper.MapContactToContactViewModel(contact);
+                var model = _contactMapper.MapContactToContactViewModel(contact);
 
                 return new HttpResponseMessage
                 {
@@ -56,6 +52,9 @@ namespace MyContacts.Controllers.ApiControllers
             }
             catch (Exception ex)
             {
+                _logger.Error(ex, "An  Error Occurred During getting Contact data by key. Error: {0}", ex.Message);
+                _logger.Error("StackTrace: {0}", ex.StackTrace);
+
                 return new HttpResponseMessage
                 {
                     Content = new ObjectContent(typeof(String), ex.Message, new JsonMediaTypeFormatter()),
@@ -69,10 +68,10 @@ namespace MyContacts.Controllers.ApiControllers
         {
             try
             {
-                var contact = contactService.GetByKey(key);
+                var contact = _contactService.GetByKey(key);
                 if (contact != null)
                 {
-                    var model = contactMapper.MapContactToContactViewModel(contact);
+                    var model = _contactMapper.MapContactToContactViewModel(contact);
                     return new HttpResponseMessage
                     {
                         Content = new ObjectContent<ContactViewModel>(model, new JsonMediaTypeFormatter()),
@@ -94,6 +93,9 @@ namespace MyContacts.Controllers.ApiControllers
             }
             catch (Exception ex)
             {
+                _logger.Error(ex, "An  Error Occurred During getting Contact data. Error: {0}", ex.Message);
+                _logger.Error("StackTrace: {0}", ex.StackTrace);
+
                 return new HttpResponseMessage
                 {
                     Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter()),
@@ -107,10 +109,10 @@ namespace MyContacts.Controllers.ApiControllers
         {
             try
             {
-                var contactInfo = contactService.GetByKey(key);
+                var contactInfo = _contactService.GetByKey(key);
                 if (contactInfo != null)
                 {
-                    var info = contactMapper.MapContactToVcf(contactInfo);
+                    var info = _contactMapper.MapContactToVcf(contactInfo);
 
                     var fileContent = VcfProviderFactory.GetVcfInstance(version).CreateByteArray(info);
 
@@ -136,6 +138,9 @@ namespace MyContacts.Controllers.ApiControllers
             }
             catch (Exception ex)
             {
+                _logger.Error(ex, "An  Error Occurred During getting VCF data. Error: {0}", ex.Message);
+                _logger.Error("StackTrace: {0}", ex.StackTrace);
+
                 return new HttpResponseMessage
                 {
                     Content = new ObjectContent(typeof(String), ex.Message, new JsonMediaTypeFormatter()),
@@ -149,10 +154,10 @@ namespace MyContacts.Controllers.ApiControllers
         {
             try
             {
-                var contact = contactService.GetByKey(key);
+                var contact = _contactService.GetByKey(key);
                 if (contact != null)
                 {
-                    var info = contactMapper.MapContactToVcf(contact);
+                    var info = _contactMapper.MapContactToVcf(contact);
 
                     var stringData = info.GetVcfAddress();
 
@@ -172,6 +177,9 @@ namespace MyContacts.Controllers.ApiControllers
             }
             catch (Exception ex)
             {
+                _logger.Error(ex, "An  Error Occurred During getting address data. Error: {0}", ex.Message);
+                _logger.Error("StackTrace: {0}", ex.StackTrace);
+
                 return new HttpResponseMessage
                 {
                     Content = new ObjectContent(typeof(String), ex.Message, new JsonMediaTypeFormatter()),
@@ -191,13 +199,13 @@ namespace MyContacts.Controllers.ApiControllers
             {
                 try
                 {
-                    var contact = contactService.GetByKey(model.ContactKey);
+                    var contact = _contactService.GetByKey(model.ContactKey);
 
-                    contact = contactMapper.MapEditContactViewModelToEntity(model, contact);
+                    contact = _contactMapper.MapEditContactViewModelToEntity(model, contact);
 
-                    contactService.Save(contact);
+                    _contactService.Save(contact);
 
-                    var retModel = contactMapper.MapContactToContactViewModel(contact);
+                    var retModel = _contactMapper.MapContactToContactViewModel(contact);
 
                     return new HttpResponseMessage
                     {
@@ -207,8 +215,8 @@ namespace MyContacts.Controllers.ApiControllers
                 }
                 catch (Exception ex)
                 {
-                    logger.Error(ex, "An  Error Occurred During saving Contact. Error: {0}", ex.Message);
-                    logger.Error("StackTrace: {0}", ex.StackTrace);
+                    _logger.Error(ex, "An  Error Occurred During saving Contact. Error: {0}", ex.Message);
+                    _logger.Error("StackTrace: {0}", ex.StackTrace);
 
                     return new HttpResponseMessage
                     {
@@ -228,11 +236,11 @@ namespace MyContacts.Controllers.ApiControllers
             {
                 try
                 {
-                    var contactInfo = contactService.GetByKey(model.ContactKey);
+                    var contactInfo = _contactService.GetByKey(model.ContactKey);
 
                     if (contactInfo != null)
                     {
-                        contactService.Delete(contactInfo);
+                        _contactService.Delete(contactInfo);
 
                         var retModel = new DeleteObjectResponseModel { IsSuccess = true };
 
@@ -248,7 +256,8 @@ namespace MyContacts.Controllers.ApiControllers
                 }
                 catch (Exception ex)
                 {
-                    //LogActionError(ex);
+                    _logger.Error(ex, "An  Error Occurred During saving Contact. Error: {0}", ex.Message);
+                    _logger.Error("StackTrace: {0}", ex.StackTrace);
 
                     return new HttpResponseMessage
                     {

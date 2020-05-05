@@ -10,7 +10,7 @@ namespace MyContacts.DataAccess.Implementation
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly MyContactsContext context;
+        private readonly MyContactsContext _context;
 
         private bool disposed = false;
 
@@ -19,7 +19,7 @@ namespace MyContacts.DataAccess.Implementation
         public Repository(MyContactsContext context)
         {
             Set = context.Set<TEntity>();
-            this.context = context;
+            this._context = context;
         }
 
         public IQueryable<TEntity> Get<T>()
@@ -39,7 +39,7 @@ namespace MyContacts.DataAccess.Implementation
 
         public void Update(TEntity item)
         {
-            context.Entry(item).State = EntityState.Modified;
+            _context.Entry(item).State = EntityState.Modified;
             SaveChanges(true);
         }
 
@@ -54,7 +54,7 @@ namespace MyContacts.DataAccess.Implementation
 
         public void Delete(TEntity item)
         {
-            if (context.Entry(item).State == EntityState.Detached)
+            if (_context.Entry(item).State == EntityState.Detached)
             {
                 Set.Attach(item);
             }
@@ -64,7 +64,7 @@ namespace MyContacts.DataAccess.Implementation
 
         public void SaveChanges(bool withDisposing = false)
         {
-            context.SaveChanges();
+            _context.SaveChanges();
 
             if (withDisposing)
             {
@@ -78,7 +78,7 @@ namespace MyContacts.DataAccess.Implementation
             {
                 if (disposing)
                 {
-                    context?.Dispose();
+                    _context?.Dispose();
                 }
             }
             this.disposed = true;

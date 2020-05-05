@@ -26,7 +26,7 @@ $('.btn-save').unbind('click').click(function () {
 
     $.post(postUrl, $('#saveEditContact').serialize(), function() {
 
-        editContactDialog.modal('toggle');
+        editContactDialog.modal('hide');
         window.location.reload();
     });
 });
@@ -48,7 +48,7 @@ $('.btn-delete').unbind('click').click(function() {
             dataType: 'JSON',
             success: function(response) {
                 deleteObj.remove();
-                deleteContactDialog.modal('toggle');
+                deleteContactDialog.modal('hide');
             },
             error: function (textStatus) {
                 alert(textStatus);
